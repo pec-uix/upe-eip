@@ -156,7 +156,7 @@
     </main>
 
     <v-snackbar v-model="showSuccess" color="#FF8200" location="top" timeout="3000">
-      <span style="color: #32327b; font-weight: 700;">登入成功，正在為您進入工作平台。</span>
+      <span style="color: #fff; font-weight: 700;">登入成功，正在為您進入工作平台。</span>
     </v-snackbar>
   </div>
 </template>
