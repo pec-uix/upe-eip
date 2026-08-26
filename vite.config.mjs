@@ -6,6 +6,7 @@ import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import VueRouter from 'vue-router/vite'
 
 export default defineConfig({
+  base: '/upe-eip/',
   plugins: [
     VueRouter({ dts: false }),
     Vue({
