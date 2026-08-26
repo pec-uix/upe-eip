@@ -14,6 +14,8 @@
     prototypeQuickLinks,
   } from '@/data/homePrototypes'
 
+  const base = import.meta.env.BASE_URL
+
   function formatFullDate (shortDate) {
     const [month, day] = shortDate.split('/')
 
@@ -32,7 +34,7 @@
           <section id="announcements" class="panel panel--news">
             <div class="panel__heading">
               <h2 class="text-headline-medium font-weight-bold">公布欄</h2>
-              <a href="/all-news">查看全部</a>
+              <a :href="`${base}all-news`">查看全部</a>
             </div>
 
             <v-list bg-color="transparent" class="pa-0">
@@ -40,7 +42,7 @@
                 v-for="(item, index) in prototypeAnnouncements.slice(0, 5)"
                 :key="item.title"
                 class="news-row"
-                :href="`/news-detail?notice=${index + 1}`"
+                :href="`${base}news-detail?notice=${index + 1}`"
               >
                 <template #prepend>
                   <span class="news-tag" :class="{ 'news-tag--top': item.top }">
@@ -95,7 +97,7 @@
           <section id="finance-reminders" class="panel">
             <div class="panel__heading">
               <h2 class="text-headline-medium font-weight-bold">財會相關作業提醒</h2>
-              <a href="/finance-reminders">查看全部</a>
+              <a :href="`${base}finance-reminders`">查看全部</a>
             </div>
 
             <div v-if="prototypeFinanceReminders.length > 0" class="finance-list">
@@ -103,7 +105,7 @@
                 v-for="(item, index) in prototypeFinanceReminders"
                 :key="item.title"
                 class="finance-row"
-                :href="`/finance-detail?reminder=${index + 1}`"
+                :href="`${base}finance-detail?reminder=${index + 1}`"
               >
                 <span class="finance-row__content">
                   <strong class="text-title-medium">{{ item.title }}</strong>
@@ -172,9 +174,9 @@
             <div>
               <h2 class="text-title-large font-weight-bold mb-3">公司資訊</h2>
 
-              <a class="end-link" href="/about-upe">關於統流開發</a>
+              <a class="end-link" :href="`${base}about-upe`">關於統流開發</a>
 
-              <a class="end-link" href="/finance-reminders">財會作業提醒</a>
+              <a class="end-link" :href="`${base}finance-reminders`">財會作業提醒</a>
             </div>
 
             <div>

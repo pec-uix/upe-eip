@@ -22,15 +22,17 @@
 
   const demoUser = { avatar: '陳', dept: '資訊管理部', id: 'A12345', name: '陳小明' }
 
+  const base = import.meta.env.BASE_URL
+
   watch(menuOpen, open => {
     document.body.style.overflow = open ? 'hidden' : ''
   })
 
   const navItems = [
-    { href: '/home', label: '首頁' },
-    { href: '/all-news', label: '公布欄' },
-    { href: '/about-upe', label: '關於統流開發' },
-    { href: '/finance-reminders', label: '財會作業提醒' },
+    { href: `${base}home`, label: '首頁' },
+    { href: `${base}all-news`, label: '公布欄' },
+    { href: `${base}about-upe`, label: '關於統流開發' },
+    { href: `${base}finance-reminders`, label: '財會作業提醒' },
   ]
 
   const drawerSections = [
@@ -54,7 +56,7 @@
       aria-label="回到首頁"
       class="subpage-brand"
       :class="{ 'subpage-brand--hidden': menuOpen }"
-      href="/home"
+      :href="`${base}home`"
     >
       <img alt="統流開發 Logo" class="subpage-logo" :src="logoUrl">
 
@@ -69,7 +71,7 @@
         <span class="mobile-greeting__hi">您好，</span>
         <span class="mobile-greeting__name">{{ demoUser.name }}</span>
       </div>
-      <a class="mobile-greeting__logout" href="/">登出</a>
+      <a class="mobile-greeting__logout" :href="base">登出</a>
     </div>
 
     <!-- 桌機導覽 -->
@@ -98,7 +100,7 @@
       </button>
 
       <div v-if="userMenuOpen" class="user-dropdown">
-        <a class="user-dropdown__item" href="/">
+        <a class="user-dropdown__item" :href="base">
           <v-icon :icon="mdiLogout" size="16" />
           登出
         </a>

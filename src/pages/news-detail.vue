@@ -2,6 +2,8 @@
   import { computed } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
 
+  const base = import.meta.env.BASE_URL
+
   import SubpageHeader from '@/components/SubpageHeader.vue'
   import {
     prototypeAnnouncements,
@@ -49,7 +51,7 @@
     <v-container class="news-detail py-8 py-md-12" max-width="1180">
       <div class="detail-actions">
         <button class="detail-action" type="button" @click="goBack">← 所有公布欄</button>
-        <a class="detail-action" href="/home">← 首頁</a>
+        <a class="detail-action" :href="`${base}home`">← 首頁</a>
       </div>
 
       <article class="notice-panel">

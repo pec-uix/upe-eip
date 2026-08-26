@@ -12,6 +12,8 @@
   const route = useRoute()
   const router = useRouter()
 
+  const base = import.meta.env.BASE_URL
+
   const selectedReminderIndex = computed(() => {
     const reminderNumber = Number(route.query.reminder)
 
@@ -45,7 +47,7 @@
 <template>
   <v-sheet class="subpage" min-height="100vh">
     <header class="subpage-header">
-      <a aria-label="回到首頁" class="subpage-brand" href="/home">
+      <a aria-label="回到首頁" class="subpage-brand" :href="`${base}home`">
         <img alt="統流開發 Logo" class="subpage-logo" :src="logoUrl">
 
         <h1 class="subpage-brand-title font-weight-bold">
@@ -54,20 +56,20 @@
       </a>
 
       <nav aria-label="財會提醒詳情主要導覽" class="subpage-nav">
-        <a class="subpage-nav-link" href="/home">首頁</a>
+        <a class="subpage-nav-link" :href="`${base}home`">首頁</a>
 
-        <a class="subpage-nav-link" href="/all-news">公布欄</a>
+        <a class="subpage-nav-link" :href="`${base}all-news`">公布欄</a>
 
-        <a class="subpage-nav-link" href="/about-upe">關於統流開發</a>
+        <a class="subpage-nav-link" :href="`${base}about-upe`">關於統流開發</a>
 
-        <a class="subpage-nav-link" href="/finance-reminders">財會作業提醒</a>
+        <a class="subpage-nav-link" :href="`${base}finance-reminders`">財會作業提醒</a>
       </nav>
     </header>
 
     <v-container class="finance-detail py-8 py-md-12" max-width="1180">
       <div class="detail-actions">
         <button class="detail-action" type="button" @click="goBack">← 所有財會提醒</button>
-        <a class="detail-action" href="/home">← 首頁</a>
+        <a class="detail-action" :href="`${base}home`">← 首頁</a>
       </div>
 
       <article class="detail-panel">
