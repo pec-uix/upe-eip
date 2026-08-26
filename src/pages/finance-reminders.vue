@@ -1,5 +1,7 @@
 <script setup>
   import SubpageHeader from '@/components/SubpageHeader.vue'
+
+  const base = import.meta.env.BASE_URL
   import {
     prototypeFinanceReminders,
   } from '@/data/homePrototypes'
@@ -30,7 +32,7 @@
             v-for="(item, index) in prototypeFinanceReminders"
             :key="item.title"
             class="finance-row"
-            :href="`/finance-detail?reminder=${index + 1}`"
+            :href="`${base}finance-detail?reminder=${index + 1}`"
           >
             <span class="finance-row__content">
               <span class="finance-row__title text-title-medium">

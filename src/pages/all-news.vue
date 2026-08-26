@@ -2,6 +2,8 @@
   import { computed, ref } from 'vue'
 
   import SubpageHeader from '@/components/SubpageHeader.vue'
+
+  const base = import.meta.env.BASE_URL
   import {
     prototypeAnnouncements,
   } from '@/data/homePrototypes'
@@ -74,7 +76,7 @@
             v-for="item in pagedAnnouncements"
             :key="item.title"
             class="news-row"
-            :href="`/news-detail?notice=${prototypeAnnouncements.indexOf(item) + 1}`"
+            :href="`${base}news-detail?notice=${prototypeAnnouncements.indexOf(item) + 1}`"
           >
             <span class="news-tag" :class="{ 'news-tag--top': item.top }">{{ item.category }}</span>
 
