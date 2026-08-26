@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "project": "統流開發 員工入口網站",
+    "version": "1.1.0",
+    "source": "統流開發官方 CIS 色彩規範（PANTONE 288 C / PANTONE 158 C），並與專案 src/plugins/vuetify.js 實際設定值交叉驗證一致",
+    "note": "primary 採用入口網站實際套用色 #32327B；accent-dark/accent-light 為 accent 延伸的深淺層次；語意色（success/warning/error/info）為業界通用值草案，可依實際需求調整"
+  },
+  "color": {
+    "primary": "#32327B",
+    "primary-light": "#E6EAF2",
+    "accent": "#FF8200",
+    "accent-dark": "#CC6800",
+    "accent-light": "#FFE8CC",
+    "on-primary": "#FFFFFF",
+    "on-accent": "#FFFFFF",
+    "background": "#FFFFFF",
+    "background-secondary": "#F5F7FB",
+    "background-dark": "#0A1A3D",
+    "text-primary": "#1A1A1A",
+    "text-secondary": "#6B7280",
+    "border": "#E5E7EB",
+    "success": "#2E7D32",
+    "warning": "#ED6C02",
+    "error": "#D32F2F",
+    "info": "#0288D1"
+  },
+  "spacing": {
+    "xs": "4px",
+    "sm": "8px",
+    "md": "16px",
+    "lg": "24px",
+    "xl": "32px"
+  },
+  "font-size": {
+    "caption": "12px",
+    "body": "16px",
+    "subheading": "18px",
+    "heading": "24px",
+    "title": "32px"
+  },
+  "radius": {
+    "sm": "4px",
+    "md": "8px",
+    "lg": "16px",
+    "full": "9999px"
+  }
+}
