@@ -31,7 +31,7 @@
     await new Promise(resolve => setTimeout(resolve, 800))
     isSubmitting.value = false
     showSuccess.value = true
-    setTimeout(() => router.push('/home-a'), 1200)
+    setTimeout(() => router.push('/home'), 1200)
   }
 </script>
 

@@ -25,7 +25,7 @@
   <v-sheet class="prototype-a" color="portalBackground" min-height="100vh">
     <v-container class="prototype-container pa-0" fluid>
       <div id="prototype-top" class="prototype-shell">
-        <SubpageHeader active="/home-a" />
+        <SubpageHeader active="/home" />
 
         <main class="prototype-a__main">
 

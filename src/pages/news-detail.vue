@@ -49,7 +49,7 @@
     <v-container class="news-detail py-8 py-md-12" max-width="1180">
       <div class="detail-actions">
         <button class="detail-action" type="button" @click="goBack">← 所有公布欄</button>
-        <a class="detail-action" href="/home-a">← 首頁</a>
+        <a class="detail-action" href="/home">← 首頁</a>
       </div>
 
       <article class="notice-panel">

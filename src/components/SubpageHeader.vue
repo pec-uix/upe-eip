@@ -27,7 +27,7 @@
   })
 
   const navItems = [
-    { href: '/home-a', label: '首頁' },
+    { href: '/home', label: '首頁' },
     { href: '/all-news', label: '公布欄' },
     { href: '/about-upe', label: '關於統流開發' },
     { href: '/finance-reminders', label: '財會作業提醒' },
@@ -54,7 +54,7 @@
       aria-label="回到首頁"
       class="subpage-brand"
       :class="{ 'subpage-brand--hidden': menuOpen }"
-      href="/home-a"
+      href="/home"
     >
       <img alt="統流開發 Logo" class="subpage-logo" :src="logoUrl">
 
