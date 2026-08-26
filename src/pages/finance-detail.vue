@@ -3,7 +3,7 @@
   import { useRoute, useRouter } from 'vue-router'
 
   import financeVoucherGuideUrl from '@/assets/finance-voucher-guide.png'
-  import logoUrl from '@/assets/upe-logo.svg'
+  import SubpageHeader from '@/components/SubpageHeader.vue'
   import {
     prototypeFinanceReminderDetails,
     prototypeFinanceReminders,
@@ -46,25 +46,7 @@
 
 <template>
   <v-sheet class="subpage" min-height="100vh">
-    <header class="subpage-header">
-      <a aria-label="回到首頁" class="subpage-brand" :href="`${base}home`">
-        <img alt="統流開發 Logo" class="subpage-logo" :src="logoUrl">
-
-        <h1 class="subpage-brand-title font-weight-bold">
-          統流開發入口網站
-        </h1>
-      </a>
-
-      <nav aria-label="財會提醒詳情主要導覽" class="subpage-nav">
-        <a class="subpage-nav-link" :href="`${base}home`">首頁</a>
-
-        <a class="subpage-nav-link" :href="`${base}all-news`">公布欄</a>
-
-        <a class="subpage-nav-link" :href="`${base}about-upe`">關於統流開發</a>
-
-        <a class="subpage-nav-link" :href="`${base}finance-reminders`">財會作業提醒</a>
-      </nav>
-    </header>
+    <SubpageHeader active="/finance-reminders" />
 
     <v-container class="finance-detail py-8 py-md-12" max-width="1180">
       <div class="detail-actions">
@@ -130,62 +112,6 @@
     --border: #e5e7eb;
     color: #1a1a1a;
     background: #fff;
-  }
-
-  .subpage-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 18px 32px;
-    border: 1px solid #1a1a1a;
-    color: #fff;
-    background: var(--blue);
-  }
-
-  .subpage-brand {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    min-width: 0;
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .subpage-brand-title {
-    display: flex;
-    min-height: 52px;
-    align-items: center;
-    margin: 0;
-    font-size: 1.625rem;
-    line-height: 1;
-    white-space: nowrap;
-  }
-
-  .subpage-logo {
-    width: 52px;
-    height: 52px;
-    object-fit: contain;
-  }
-
-  .subpage-nav {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 26px;
-    min-width: 0;
-    overflow-x: auto;
-  }
-
-  .subpage-nav-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 2px;
-    color: #fff;
-    font-size: 1.0625rem;
-    font-weight: 700;
-    text-decoration: none;
-    white-space: nowrap;
   }
 
   .finance-detail,
@@ -297,21 +223,6 @@
   }
 
   @media (max-width: 760px) {
-    .subpage-header {
-      display: grid;
-      padding: 16px;
-    }
-
-    .subpage-logo {
-      width: 44px;
-      height: 44px;
-    }
-
-    .subpage-brand-title {
-      min-height: 44px;
-      font-size: 1.25rem;
-    }
-
     .reminder-callout {
       grid-template-columns: 1fr;
       padding: 20px;
