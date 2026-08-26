@@ -171,7 +171,7 @@
 
 <style scoped>
   .subpage-header-spacer {
-    height: 96px;
+    height: 72px;
     flex-shrink: 0;
   }
 
@@ -182,7 +182,7 @@
     right: 0;
     z-index: 100;
     display: flex;
-    min-height: 96px;
+    min-height: 72px;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
@@ -211,8 +211,8 @@
   }
 
   .subpage-logo {
-    width: 85px;
-    height: 85px;
+    width: 56px;
+    height: 56px;
     object-fit: contain;
     flex-shrink: 0;
   }
@@ -280,7 +280,7 @@
   /* ─── 全螢幕選單 ─────────────────────────── */
   .subpage-drawer {
     position: fixed;
-    top: 96px;
+    top: 72px;
     left: 0;
     right: 0;
     bottom: 0;
