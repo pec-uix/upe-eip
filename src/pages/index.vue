@@ -472,8 +472,8 @@
     }
 
     .brand-logo {
-      width: 70px;
-      height: 70px;
+      width: 85px;
+      height: 85px;
     }
 
     .form-heading {
