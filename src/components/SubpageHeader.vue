@@ -211,8 +211,8 @@
   }
 
   .subpage-logo {
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    height: 52px;
     object-fit: contain;
     flex-shrink: 0;
   }
