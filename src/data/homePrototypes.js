@@ -79,7 +79,6 @@ export const prototypeAnnouncements = [
     publishedAt: '2026/08/25 09:00',
     tag: '置頂',
     title: '2026 年下半年員工健康檢查實施辦法與預約時段公告',
-    top: true,
   },
   {
     category: '公司公告',

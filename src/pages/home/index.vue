@@ -24,12 +24,10 @@
 </script>
 
 <template>
-  <v-sheet class="prototype-a" color="portalBackground" min-height="100vh">
-    <v-container class="prototype-container pa-0" fluid>
-      <div id="prototype-top" class="prototype-shell">
-        <SubpageHeader active="/home" />
+  <v-sheet class="prototype-a" min-height="100vh">
+    <SubpageHeader active="/home" />
 
-        <main class="prototype-a__main">
+    <v-container class="prototype-a__main py-6 py-md-10" max-width="1180">
 
           <section id="announcements" class="panel panel--news">
             <div class="panel__heading">
@@ -192,8 +190,6 @@
               </a>
             </div>
           </section>
-        </main>
-      </div>
     </v-container>
   </v-sheet>
 </template>
@@ -205,21 +201,12 @@
     --orange: #ff8200;
     --border: #e5e7eb;
     color: #1a1a1a;
-  }
-
-  .prototype-container {
-    min-height: 100vh;
-  }
-
-  .prototype-shell {
-    min-height: 100vh;
     background: #f5f7fb;
   }
 
   .prototype-a__main {
     display: grid;
     gap: 32px;
-    padding: clamp(24px, 3vw, 48px);
   }
 
   /* ── 歡迎橫幅 ── */
@@ -577,34 +564,6 @@
   }
 
   @media (max-width: 960px) {
-    .prototype-a__header {
-      padding: 0 20px;
-    }
-
-    .prototype-a__menu-button {
-      display: inline-flex;
-      flex: 0 0 auto;
-      order: 2;
-      margin-left: auto;
-    }
-
-    .prototype-a__nav {
-      display: none;
-    }
-
-    .prototype-a__brand {
-      min-width: 0;
-    }
-
-    .prototype-a__brand-title {
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .prototype-a__main {
-      padding: 20px;
-    }
-
     .panel {
       padding: 20px;
     }
@@ -627,31 +586,6 @@
   }
 
   @media (max-width: 600px) {
-    .prototype-a__header {
-      padding: 0 12px;
-    }
-
-    .prototype-a__main {
-      padding: 16px;
-    }
-
-    .prototype-a__brand {
-      gap: 10px;
-      min-width: 0;
-    }
-
-    .prototype-a__logo {
-      width: 36px;
-      height: 36px;
-    }
-
-    .prototype-a__brand-title {
-      font-size: 1rem;
-      letter-spacing: 0.04em;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
     .panel {
       padding: 16px;
     }
