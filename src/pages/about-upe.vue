@@ -34,7 +34,7 @@
   <v-sheet class="subpage" min-height="100vh">
     <SubpageHeader active="/about-upe" />
 
-    <v-container class="about-page py-10 py-md-16" max-width="1180">
+    <v-container class="about-page py-10 py-md-16" fluid>
 
       <!-- Hero: 左欄大標題 ／ 右欄簡介文字 -->
       <section class="about-hero">

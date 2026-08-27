@@ -27,7 +27,7 @@
   <v-sheet class="prototype-a" min-height="100vh">
     <SubpageHeader active="/home" />
 
-    <v-container class="prototype-a__main py-6 py-md-10" max-width="1180">
+    <v-container class="prototype-a__main py-6 py-md-10" fluid>
 
           <section id="announcements" class="panel panel--news">
             <div class="panel__heading">
