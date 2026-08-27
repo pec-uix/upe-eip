@@ -17,7 +17,7 @@
   <v-sheet class="subpage" min-height="100vh">
     <SubpageHeader active="/finance-reminders" />
 
-    <v-container class="finance-page py-6 py-md-10" fluid>
+    <v-container class="finance-page py-6 py-md-10" max-width="1180">
       <section class="finance-panel">
         <div class="finance-heading">
           <h1 class="text-headline-medium font-weight-bold">財會相關作業提醒</h1>

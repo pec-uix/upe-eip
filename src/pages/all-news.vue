@@ -48,7 +48,7 @@
   <v-sheet class="subpage" min-height="100vh">
     <SubpageHeader active="/all-news" />
 
-    <v-container class="news-page py-6 py-md-10" fluid>
+    <v-container class="news-page py-6 py-md-10" max-width="1180">
       <section class="news-panel">
         <div class="news-heading">
           <h1 class="text-headline-medium font-weight-bold">公布欄</h1>
