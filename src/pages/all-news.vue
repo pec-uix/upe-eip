@@ -256,6 +256,10 @@
     white-space: nowrap;
   }
 
+  .news-row__title {
+    font-size: 1.25rem;
+  }
+
   .news-row__aside {
     display: inline-flex;
     align-items: center;
