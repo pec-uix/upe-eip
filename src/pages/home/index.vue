@@ -1,14 +1,10 @@
 <script setup>
-  import {
-    mdiChevronDown,
-  } from '@mdi/js'
-
   import SubpageHeader from '@/components/SubpageHeader.vue'
   import {
     calendarMonthUrl,
+    getAnnouncementCategoryStyle,
     prototypeAnnouncements,
     prototypeExternalLinks,
-    prototypeFinanceReminders,
     prototypeInfoLinks,
     prototypeKnowledgeLinks,
     prototypeQuickLinks,
@@ -29,167 +25,144 @@
 
     <v-container class="prototype-a__main py-6 py-md-10" max-width="1180">
 
-          <section id="announcements" class="panel panel--news">
+      <section id="announcements" class="panel panel--news">
+        <div class="panel__heading">
+          <h2 class="text-headline-medium font-weight-bold">公布欄</h2>
+          <a :href="`${base}all-news`">查看全部</a>
+        </div>
+
+        <v-list bg-color="transparent" class="pa-0">
+          <v-list-item
+            v-for="(item, index) in prototypeAnnouncements.slice(0, 5)"
+            :key="item.title"
+            class="news-row"
+            :to="{ path: '/news-detail', query: { notice: index + 1 } }"
+          >
+            <template #prepend>
+              <span class="news-tag" :style="getAnnouncementCategoryStyle(item.categoryKey)">
+                {{ item.category }}
+              </span>
+            </template>
+
+            <span class="news-tag news-tag--inline" :style="getAnnouncementCategoryStyle(item.categoryKey)">
+              {{ item.category }}
+            </span>
+
+            <v-list-item-title class="text-title-medium">
+              {{ item.title }}
+            </v-list-item-title>
+
+            <template #append>
+              <v-chip
+                v-if="item.file"
+                class="mr-3"
+                color="accent"
+                size="small"
+                variant="outlined"
+              >
+                附件
+              </v-chip>
+
+              <span class="text-body-small text-medium-emphasis">{{ formatFullDate(item.date) }}</span>
+            </template>
+          </v-list-item>
+        </v-list>
+      </section>
+
+      <section id="quick-links">
+        <h2 class="section-title text-headline-medium font-weight-bold mb-4">
+          快速連結
+        </h2>
+
+        <v-row dense>
+          <v-col
+            v-for="link in prototypeQuickLinks"
+            :key="link.name"
+            cols="12"
+            lg="3"
+            md="4"
+            sm="6"
+          >
+            <v-card class="quick-card" :href="link.href" rounded="lg" variant="outlined">
+              <v-icon class="quick-card__icon" :icon="link.icon" size="33" />
+
+              <span class="quick-card__text">
+                <span class="font-weight-bold">{{ link.name }}</span>
+              </span>
+            </v-card>
+          </v-col>
+        </v-row>
+      </section>
+
+      <v-row class="calendar-info-row" dense>
+        <v-col class="calendar-info-row__col" cols="12" md="6">
+          <section id="calendar" class="panel panel--calendar">
             <div class="panel__heading">
-              <h2 class="text-headline-medium font-weight-bold">公布欄</h2>
-              <a :href="`${base}all-news`">查看全部</a>
+              <h2 class="text-headline-medium font-weight-bold">公司日曆</h2>
+              <span>Google Calendar 嵌入</span>
             </div>
 
-            <v-list bg-color="transparent" class="pa-0">
-              <v-list-item
-                v-for="(item, index) in prototypeAnnouncements.slice(0, 5)"
-                :key="item.title"
-                class="news-row"
-                :href="`${base}news-detail?notice=${index + 1}`"
-              >
-                <template #prepend>
-                  <span class="news-tag" :class="{ 'news-tag--top': item.top }">
-                    {{ item.category }}
-                  </span>
-                </template>
-
-                <span class="news-tag news-tag--inline" :class="{ 'news-tag--top': item.top }">
-                  {{ item.category }}
-                </span>
-
-                <v-list-item-title class="text-body-large">
-                  {{ item.title }}
-                </v-list-item-title>
-
-                <template #append>
-                  <v-chip v-if="item.file" class="mr-3" size="small" variant="outlined">
-                    附件
-                  </v-chip>
-
-                  <span class="text-body-small text-medium-emphasis">{{ formatFullDate(item.date) }}</span>
-                </template>
-              </v-list-item>
-            </v-list>
+            <iframe
+              class="calendar-frame"
+              loading="lazy"
+              :src="calendarMonthUrl"
+              title="公司日曆 A"
+            />
           </section>
+        </v-col>
 
-          <section id="quick-links">
-            <h2 class="section-title text-headline-medium font-weight-bold mb-4">
-              快速連結
-            </h2>
-
-            <v-row dense>
-              <v-col
-                v-for="link in prototypeQuickLinks"
-                :key="link.name"
-                cols="12"
-                lg="3"
-                md="4"
-                sm="6"
-              >
-                <v-card class="quick-card" :href="link.href" rounded="lg" variant="outlined">
-                  <v-icon class="quick-card__icon" :icon="link.icon" size="22" />
-
-                  <span class="quick-card__text">
-                    <span class="text-body-large">{{ link.name }}</span>
-                  </span>
-                </v-card>
-              </v-col>
-            </v-row>
-          </section>
-
-          <section id="finance-reminders" class="panel">
-            <div class="panel__heading">
-              <h2 class="text-headline-medium font-weight-bold">財會相關作業提醒</h2>
-              <a :href="`${base}finance-reminders`">查看全部</a>
-            </div>
-
-            <div v-if="prototypeFinanceReminders.length > 0" class="finance-list">
-              <a
-                v-for="(item, index) in prototypeFinanceReminders"
-                :key="item.title"
-                class="finance-row"
-                :href="`${base}finance-detail?reminder=${index + 1}`"
-              >
-                <span class="finance-row__content">
-                  <strong class="text-title-medium">{{ item.title }}</strong>
-                </span>
-
-                <span class="finance-row__date text-title-medium font-weight-bold">
-                  {{ formatFullDate(item.date) }}
-                </span>
-              </a>
-            </div>
-
-            <div v-else class="finance-empty text-body-large text-medium-emphasis">
-              目前無財會提醒
-            </div>
-          </section>
-
-          <v-row class="calendar-info-row" dense>
-            <v-col class="calendar-info-row__col" cols="12" md="6">
-              <section id="calendar" class="panel panel--calendar">
-                <div class="panel__heading">
-                  <h2 class="text-headline-medium font-weight-bold">公司日曆</h2>
-                  <span>Google Calendar 嵌入</span>
-                </div>
-
-                <iframe
-                  class="calendar-frame"
-                  loading="lazy"
-                  :src="calendarMonthUrl"
-                  title="公司日曆 A"
-                />
-              </section>
-            </v-col>
-
-            <v-col class="calendar-info-row__col" cols="12" md="6">
-              <div class="stack stack--aligned">
-                <section id="company-info" class="panel">
-                  <h2 class="text-title-large font-weight-bold mb-3">聯絡方式查詢</h2>
-
-                  <a
-                    v-for="item in prototypeInfoLinks"
-                    :key="item.label"
-                    class="simple-link"
-                    :href="item.href"
-                  >
-                    {{ item.label }}
-                  </a>
-                </section>
-
-                <section id="knowledge" class="panel">
-                  <h2 class="text-title-large font-weight-bold mb-3">內部系統連結</h2>
-
-                  <a
-                    v-for="item in prototypeKnowledgeLinks"
-                    :key="item.label"
-                    class="simple-link"
-                    :href="item.href"
-                  >
-                    {{ item.label }}
-                  </a>
-                </section>
-              </div>
-            </v-col>
-          </v-row>
-
-          <section id="external-links" class="end-links">
-            <div>
-              <h2 class="text-title-large font-weight-bold mb-3">公司資訊</h2>
-
-              <a class="end-link" :href="`${base}about-upe`">關於統流開發</a>
-
-              <a class="end-link" :href="`${base}finance-reminders`">財會作業提醒</a>
-            </div>
-
-            <div>
-              <h2 class="text-title-large font-weight-bold mb-3">外部網站連結</h2>
+        <v-col class="calendar-info-row__col" cols="12" md="6">
+          <div class="stack stack--aligned">
+            <section id="company-info" class="panel">
+              <h2 class="text-title-large font-weight-bold mb-3">聯絡方式查詢</h2>
 
               <a
-                v-for="item in prototypeExternalLinks"
+                v-for="item in prototypeInfoLinks"
                 :key="item.label"
-                class="end-link"
+                class="simple-link"
                 :href="item.href"
               >
                 {{ item.label }}
               </a>
-            </div>
-          </section>
+            </section>
+
+            <section id="knowledge" class="panel">
+              <h2 class="text-title-large font-weight-bold mb-3">內部系統連結</h2>
+
+              <a
+                v-for="item in prototypeKnowledgeLinks"
+                :key="item.label"
+                class="simple-link"
+                :href="item.href"
+              >
+                {{ item.label }}
+              </a>
+            </section>
+          </div>
+        </v-col>
+      </v-row>
+
+      <section id="external-links" class="end-links">
+        <div>
+          <h2 class="text-title-large font-weight-bold mb-3">公司資訊</h2>
+
+          <a class="end-link" :href="`${base}about-upe`">關於統流開發</a>
+
+        </div>
+
+        <div>
+          <h2 class="text-title-large font-weight-bold mb-3">外部網站連結</h2>
+
+          <a
+            v-for="item in prototypeExternalLinks"
+            :key="item.label"
+            class="end-link"
+            :href="item.href"
+          >
+            {{ item.label }}
+          </a>
+        </div>
+      </section>
     </v-container>
   </v-sheet>
 </template>
@@ -248,7 +221,7 @@
 
   .greeting-date {
     margin: 8px 0 0;
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     color: rgba(255, 255, 255, 0.5);
   }
 
@@ -370,6 +343,10 @@
     white-space: nowrap;
   }
 
+  .news-row :deep(.v-list-item-title) {
+    font-size: 1.25rem;
+  }
+
   .news-row :deep(.v-list-item__append) {
     flex: 0 0 auto;
     margin-inline-start: 16px;
@@ -377,21 +354,14 @@
 
   .news-tag {
     display: inline-flex;
-    width: 88px;
-    min-width: 88px;
+    width: 96px;
+    min-width: 96px;
     justify-content: center;
     padding: 4px 8px;
     border-radius: 4px;
-    color: var(--blue);
-    background: #e6eaf2;
-    font-size: 0.75rem;
+    font-size: 0.9375rem;
     font-weight: 700;
     white-space: nowrap;
-  }
-
-  .news-tag--top {
-    color: #fff;
-    background: var(--blue);
   }
 
   .news-tag--inline {
@@ -400,12 +370,14 @@
 
   .quick-card {
     display: flex;
-    min-height: 76px;
+    min-height: 92px;
     align-items: center;
-    gap: 16px;
-    padding: 16px;
+    gap: 24px;
+    padding: 20px 24px;
     color: inherit;
     text-decoration: none;
+    background: #fff;
+    transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   }
 
   .quick-card__text {
@@ -414,78 +386,30 @@
     gap: 2px;
   }
 
+  .quick-card__text span {
+    font-size: 1.25rem;
+  }
+
   .quick-card:hover {
     border-color: var(--blue);
+    background: var(--blue);
+    box-shadow: 0 8px 20px rgba(50, 50, 123, 0.18);
+    color: #fff;
   }
 
   .quick-card__icon {
-    width: 36px;
-    height: 36px;
+    width: 54px;
+    height: 54px;
     border-radius: 4px;
     color: var(--blue);
     background: #e6eaf2;
+    flex-shrink: 0;
   }
 
-  .finance-card {
-    display: grid;
-    gap: 8px;
-    min-height: 128px;
-    align-content: start;
-    padding: 16px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: #1a1a1a;
-    background: #fff;
-    text-decoration: none;
-  }
-
-  .finance-card__date {
-    color: var(--blue);
-  }
-
-  .finance-card small {
-    color: #6b7280;
-  }
-
-  .finance-list {
-    display: grid;
-  }
-
-  .finance-row {
-    display: grid;
-    align-items: center;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 20px;
-    min-height: 64px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .finance-row:hover {
-    background: #f9fafc;
-  }
-
-  .finance-row__date {
-    color: var(--blue);
-    white-space: nowrap;
-  }
-
-  .finance-row__content {
-    display: grid;
-    min-width: 0;
-    gap: 2px;
-  }
-
-  .finance-row__content strong {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .finance-empty {
-    color: #6b7280;
+  .quick-card:hover .quick-card__icon {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 -4px 0 var(--orange);
   }
 
   .calendar-frame {
@@ -606,12 +530,9 @@
 
     .news-tag--inline {
       display: inline-flex;
-      width: auto;
+      width: fit-content;
       min-width: 0;
-      justify-content: flex-start;
-      padding: 0;
-      color: var(--blue);
-      background: transparent;
+      justify-content: center;
       font-size: 0.875rem;
     }
 
@@ -625,15 +546,6 @@
 
     .news-row :deep(.v-list-item-subtitle) {
       display: none;
-    }
-
-    .finance-row {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 12px;
-    }
-
-    .finance-row__date {
-      justify-self: start;
     }
 
     .calendar-frame {

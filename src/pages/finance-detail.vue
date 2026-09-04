@@ -40,18 +40,21 @@
       return
     }
 
-    router.push('/finance-reminders')
+    router.push({
+      path: '/all-news',
+      query: { category: '財會作業' },
+    })
   }
 </script>
 
 <template>
   <v-sheet class="subpage" min-height="100vh">
-    <SubpageHeader active="/finance-reminders" />
+    <SubpageHeader active="/all-news" />
 
     <v-container class="finance-detail py-8 py-md-12" max-width="1180">
       <div class="detail-actions">
         <a class="detail-action" :href="`${base}home`">← 首頁</a>
-        <button class="detail-action" type="button" @click="goBack">← 所有財會提醒</button>
+        <button class="detail-action" type="button" @click="goBack">← 公布欄財會作業</button>
       </div>
 
       <article class="detail-panel">

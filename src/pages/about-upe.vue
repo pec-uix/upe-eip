@@ -1,7 +1,5 @@
 <script setup>
   import SubpageHeader from '@/components/SubpageHeader.vue'
-  import {
-  } from '@/data/homePrototypes'
 
   const aboutIntro = [
     '鑒於國內消費型態改變，網路購物市場迅速擴張，透過網路銷售之商品數量遽增，物流配送需求因而擴大。統一企業集團流通事業之零售點持續於全台各地擴增，物流運送體系的升級實為刻不容緩，而大型的物流中心是物流產業的基礎建設，所以在全國北部、中部、南部各地開發設置複合式多功能物流中心是本集團必要之經營策略。',

@@ -1,24 +1,33 @@
 <script setup>
-  import { computed, ref } from 'vue'
+  import { computed, ref, watch } from 'vue'
+  import { useRoute, useRouter } from 'vue-router'
 
   import SubpageHeader from '@/components/SubpageHeader.vue'
-
-  const base = import.meta.env.BASE_URL
   import {
+    announcementCategoryOptions,
+    getAnnouncementCategoryDescription,
+    getAnnouncementCategoryStyle,
     prototypeAnnouncements,
   } from '@/data/homePrototypes'
+
+  const route = useRoute()
+  const router = useRouter()
 
   const selectedCategory = ref('全部')
 
   const categories = computed(() => [
-    '全部',
-    ...new Set(prototypeAnnouncements.map(item => item.category)),
+    { key: '全部', label: '全部' },
+    ...announcementCategoryOptions,
   ])
+
+  const selectedCategoryOption = computed(() => {
+    return categories.value.find(category => category.key === selectedCategory.value)
+  })
 
   const filteredAnnouncements = computed(() => {
     if (selectedCategory.value === '全部') return prototypeAnnouncements
 
-    return prototypeAnnouncements.filter(item => item.category === selectedCategory.value)
+    return prototypeAnnouncements.filter(item => item.categoryKey === selectedCategoryOption.value?.key)
   })
 
   const currentPage = ref(1)
@@ -32,9 +41,38 @@
     return filteredAnnouncements.value.slice(start, start + pageSize)
   })
 
-  function selectCategory (category) {
-    selectedCategory.value = category
+  watch(
+    [categories, () => route.query.category],
+    ([categoryOptions, categoryQuery]) => {
+      const matchedCategory = categoryOptions.find(category => {
+        return category.key === categoryQuery || category.label === categoryQuery
+      })
+
+      selectedCategory.value = matchedCategory?.key ?? '全部'
+      currentPage.value = 1
+    },
+    { immediate: true },
+  )
+
+  async function selectCategory (category) {
+    selectedCategory.value = category.key
     currentPage.value = 1
+
+    await router.replace({
+      query: category.key === '全部' ? {} : { category: category.key },
+    })
+  }
+
+  function getCategoryFilterStyle (category) {
+    if (category.key === '全部') return {}
+
+    return getAnnouncementCategoryStyle(category.key)
+  }
+
+  function getCategoryFilterDescription (category) {
+    if (category.key === '全部') return '顯示全部公告。'
+
+    return getAnnouncementCategoryDescription(category.key)
   }
 
   function formatFullDate (shortDate) {
@@ -61,24 +99,28 @@
         <div id="news-categories" aria-label="公布欄分類" class="category-filter">
           <button
             v-for="category in categories"
-            :key="category"
+            :key="category.key"
             class="category-filter__button"
-            :class="{ 'category-filter__button--active': selectedCategory === category }"
+            :class="{ 'category-filter__button--active': selectedCategory === category.key }"
+            :style="getCategoryFilterStyle(category)"
+            :title="getCategoryFilterDescription(category)"
             type="button"
             @click="selectCategory(category)"
           >
-            {{ category }}
+            {{ category.label }}
           </button>
         </div>
 
         <div class="news-list">
-          <a
+          <RouterLink
             v-for="item in pagedAnnouncements"
             :key="item.title"
             class="news-row"
-            :href="`${base}news-detail?notice=${prototypeAnnouncements.indexOf(item) + 1}`"
+            :to="{ path: '/news-detail', query: { notice: prototypeAnnouncements.indexOf(item) + 1 } }"
           >
-            <span class="news-tag" :class="{ 'news-tag--top': item.top }">{{ item.category }}</span>
+            <span class="news-tag" :style="getAnnouncementCategoryStyle(item.categoryKey)">
+              {{ item.category }}
+            </span>
 
             <span class="news-row__content">
               <span class="news-row__title text-title-medium">
@@ -95,7 +137,7 @@
                 {{ formatFullDate(item.date) }}
               </span>
             </span>
-          </a>
+          </RouterLink>
         </div>
 
         <div v-if="totalPages > 1" class="news-pagination">
@@ -151,26 +193,30 @@
   .category-filter {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 8px;
     padding: 8px 0 24px;
   }
 
   .category-filter__button {
-    min-width: 96px;
-    padding: 8px 20px;
-    border: 1px solid #1a1a1a;
-    border-radius: 999px;
-    color: #1a1a1a;
+    min-width: 88px;
+    padding: 4px 8px;
+    border: 0;
+    border-radius: 4px;
+    color: var(--blue);
     cursor: pointer;
     font: inherit;
     font-weight: 700;
     background: #fff;
+    transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  }
+
+  .category-filter__button:hover {
+    box-shadow: 0 6px 14px rgba(50, 50, 123, 0.1);
+    transform: translateY(-1px);
   }
 
   .category-filter__button--active {
-    border-color: var(--orange);
-    color: #fff;
-    background: var(--orange);
+    box-shadow: inset 0 0 0 2px currentColor, 0 6px 14px rgba(50, 50, 123, 0.1);
   }
 
   .news-list {
@@ -191,6 +237,10 @@
 
   .news-row:nth-child(even) {
     background: #f9fafc;
+  }
+
+  .news-row:hover {
+    background: #e6eaf2;
   }
 
   .news-row__content {
@@ -221,16 +271,9 @@
     justify-content: center;
     padding: 4px 8px;
     border-radius: 4px;
-    color: var(--blue);
-    background: #e6eaf2;
-    font-size: 0.75rem;
+    font-size: 0.9375rem;
     font-weight: 700;
     white-space: nowrap;
-  }
-
-  .news-tag--top {
-    color: #fff;
-    background: var(--blue);
   }
 
   .news-row__file {
@@ -282,12 +325,9 @@
     }
 
     .news-tag {
-      width: auto;
+      width: fit-content;
       min-width: 0;
-      justify-content: flex-start;
-      padding: 0;
-      color: var(--blue);
-      background: transparent;
+      justify-content: center;
       font-size: 0.875rem;
       grid-column: 1;
       grid-row: 1;

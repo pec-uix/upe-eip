@@ -2,12 +2,13 @@
   import { computed } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
 
-  const base = import.meta.env.BASE_URL
-
   import SubpageHeader from '@/components/SubpageHeader.vue'
   import {
+    getAnnouncementCategoryStyle,
     prototypeAnnouncements,
   } from '@/data/homePrototypes'
+
+  const base = import.meta.env.BASE_URL
 
   const route = useRoute()
   const router = useRouter()
@@ -27,7 +28,7 @@
 
     return [
       `${item.meta} 已於 ${item.publishedAt} 發布「${item.title}」。`,
-      `本公告分類為「${item.category}」，請同仁依公告時程完成相關作業，若內容涉及跨部門配合，請依所屬單位窗口通知辦理。`,
+      `本公告類型為「${item.categoryKey}」，請同仁依公告時程完成相關作業，若內容涉及跨部門配合，請依所屬單位窗口通知辦理。`,
       item.file
         ? '此公告附有文件，正式版本可於附件區進行 PDF 預覽與列印。'
         : '此公告目前無附件，請以本頁文字內容為主要參考。',
@@ -60,7 +61,15 @@
             {{ selectedNotice.publishedAt.slice(0, 10).replaceAll('/', '.') }}
           </span>
 
-          <span class="news-tag" :class="{ 'news-tag--top': selectedNotice.top }">
+          <span class="notice-panel__category-label text-title-small font-weight-bold">
+            公告類型
+          </span>
+
+          <span class="notice-panel__category-name text-title-small font-weight-bold">
+            {{ selectedNotice.categoryKey }}
+          </span>
+
+          <span class="news-tag" :style="getAnnouncementCategoryStyle(selectedNotice.categoryKey)">
             {{ selectedNotice.category }}
           </span>
         </div>
@@ -136,7 +145,7 @@
     background: #fff;
   }
 
-.news-detail {
+  .news-detail {
     display: grid;
     gap: 40px;
   }
@@ -186,6 +195,14 @@
     color: #6b7280;
   }
 
+  .notice-panel__category-label {
+    color: var(--blue);
+  }
+
+  .notice-panel__category-name {
+    color: #1a1a1a;
+  }
+
   .notice-panel__title {
     max-width: 960px;
   }
@@ -201,20 +218,12 @@
 
   .news-tag {
     display: inline-flex;
-    min-width: 86px;
+    min-width: 88px;
     justify-content: center;
     padding: 4px 8px;
-    border: 1px solid currentColor;
-    border-radius: 999px;
-    color: var(--orange);
-    background: #fff;
-    font-size: 0.75rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
     font-weight: 700;
-  }
-
-  .news-tag--top {
-    color: #fff;
-    background: var(--orange);
   }
 
   .notice-attachment {

@@ -50,7 +50,7 @@
         </div>
 
         <div class="brand-text">
-          <h1 class="brand-name">統流開發<br>入口網站</h1>
+          <h1 class="brand-name">統流開發<br>員工入口網站</h1>
           <p class="brand-tagline">Enterprise Information Portal</p>
         </div>
 
@@ -64,7 +64,7 @@
       <!-- 行動版 header（桌機隱藏） -->
       <div class="mobile-brand">
         <img alt="統流開發" class="mobile-logo" :src="logoUrl">
-        <span class="mobile-name">統流開發入口網站</span>
+        <span class="mobile-name">統流開發員工入口網站</span>
       </div>
 
       <div class="form-card">
@@ -232,7 +232,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 32px;
     text-align: center;
   }
 
@@ -242,29 +242,29 @@
   }
 
   .brand-logo {
-    width: 160px;
-    height: 160px;
+    width: clamp(240px, 22vw, 320px);
+    height: clamp(160px, 15vw, 220px);
     object-fit: contain;
     filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.25));
   }
 
   .brand-text {
     display: grid;
-    gap: 10px;
+    gap: 16px;
   }
 
   .brand-name {
     margin: 0;
-    font-size: clamp(2.4rem, 3.8vw, 3.4rem);
+    font-size: clamp(3.75rem, 5.6vw, 5rem);
     font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
+    line-height: 1.725;
+    letter-spacing: 0;
     color: #fff;
   }
 
   .brand-tagline {
     margin: 0;
-    font-size: 0.8125rem;
+    font-size: 1rem;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.38);
     letter-spacing: 0.14em;
@@ -273,8 +273,8 @@
 
   /* 橘色細條 */
   .brand-accent {
-    width: 44px;
-    height: 3px;
+    width: 56px;
+    height: 4px;
     border-radius: 999px;
     background: #FF8200;
     box-shadow: 0 0 12px rgba(255, 130, 0, 0.5);
@@ -309,10 +309,10 @@
 
   .form-title {
     margin: 0 0 10px;
-    font-size: clamp(1.75rem, 2.8vw, 2.25rem);
+    font-size: clamp(2rem, 3vw, 2.5rem);
     font-weight: 700;
     color: #0d0d3d;
-    letter-spacing: -0.025em;
+    letter-spacing: 0;
   }
 
   .form-subtitle {
@@ -468,12 +468,12 @@
 
   @media (max-height: 700px) and (min-width: 861px) {
     .brand-inner {
-      gap: 18px;
+      gap: 20px;
     }
 
     .brand-logo {
-      width: 85px;
-      height: 85px;
+      width: 180px;
+      height: 120px;
     }
 
     .form-heading {

@@ -29,10 +29,9 @@
   })
 
   const navItems = [
-    { href: `${base}home`, label: '首頁' },
-    { href: `${base}all-news`, label: '公布欄' },
-    { href: `${base}about-upe`, label: '關於統流開發' },
-    { href: `${base}finance-reminders`, label: '財會作業提醒' },
+    { href: `${base}home`, label: '首頁', route: '/home' },
+    { href: `${base}all-news`, label: '公布欄', route: '/all-news' },
+    { href: `${base}about-upe`, label: '關於統流開發', route: '/about-upe' },
   ]
 
   const drawerSections = [
@@ -61,7 +60,7 @@
       <img alt="統流開發 Logo" class="subpage-logo" :src="logoUrl">
 
       <h1 class="subpage-brand-title font-weight-bold">
-        統流開發入口網站
+        統流開發員工入口網站
       </h1>
     </a>
 
@@ -71,6 +70,7 @@
         <span class="mobile-greeting__hi">您好，</span>
         <span class="mobile-greeting__name">{{ demoUser.name }}</span>
       </div>
+
       <a class="mobile-greeting__logout" :href="base">登出</a>
     </div>
 
@@ -80,7 +80,7 @@
         v-for="item in navItems"
         :key="item.href"
         class="subpage-nav-link"
-        :class="{ 'subpage-nav-link--active': active === item.href }"
+        :class="{ 'subpage-nav-link--active': active === item.route }"
         :href="item.href"
       >
         {{ item.label }}
@@ -91,6 +91,7 @@
     <div class="user-menu">
       <button class="user-btn" @click="userMenuOpen = !userMenuOpen">
         <span class="user-greeting">您好，{{ demoUser.name }}</span>
+
         <v-icon
           class="user-chevron"
           :class="{ 'user-chevron--open': userMenuOpen }"
@@ -126,7 +127,7 @@
           v-for="item in navItems"
           :key="item.href"
           class="drawer-nav-link"
-          :class="{ 'drawer-nav-link--active': active === item.href }"
+          :class="{ 'drawer-nav-link--active': active === item.route }"
           :href="item.href"
           @click="menuOpen = false"
         >
@@ -171,7 +172,7 @@
 
 <style scoped>
   .subpage-header-spacer {
-    height: 72px;
+    height: 88px;
     flex-shrink: 0;
   }
 
@@ -182,11 +183,11 @@
     right: 0;
     z-index: 100;
     display: flex;
-    min-height: 72px;
+    min-height: 88px;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    padding: 0 40px;
+    padding: 0 48px;
     border-bottom: 3px solid #ff8200;
     color: #fff;
     background: #32327b;
@@ -204,15 +205,15 @@
   .subpage-brand-title {
     display: block;
     margin: 0;
-    font-size: 1.375rem;
+    font-size: 1.75rem;
     line-height: 1.2;
-    letter-spacing: 0.08em;
+    letter-spacing: 0;
     white-space: nowrap;
   }
 
   .subpage-logo {
-    width: 56px;
-    height: 56px;
+    width: 84px;
+    height: 64px;
     object-fit: contain;
     flex-shrink: 0;
   }
@@ -222,7 +223,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 32px;
+    gap: 36px;
     min-width: 0;
     overflow-x: auto;
   }
@@ -231,7 +232,7 @@
     display: inline-flex;
     align-items: center;
     color: rgba(255, 255, 255, 0.82);
-    font-size: 1.0625rem;
+    font-size: 1.125rem;
     font-weight: 700;
     text-decoration: none;
     white-space: nowrap;
@@ -280,7 +281,7 @@
   /* ─── 全螢幕選單 ─────────────────────────── */
   .subpage-drawer {
     position: fixed;
-    top: 72px;
+    top: 88px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -502,7 +503,7 @@
   /* ─── 響應式 ─────────────────────────────── */
   @media (max-width: 860px) {
     .subpage-header {
-      padding: 0 20px;
+      padding: 0 24px;
     }
 
     .subpage-nav {

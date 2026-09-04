@@ -35,7 +35,6 @@ export const prototypeNavItems = [
   { href: '#prototype-top', label: '首頁' },
   { href: '/about-upe', label: '關於統流開發' },
   { href: '/all-news', label: '查看更多消息' },
-  { href: '/finance-reminders', label: '財會相關作業提醒' },
 ]
 
 export const prototypeHomeSections = [
@@ -61,17 +60,41 @@ export const prototypeSubpages = [
     label: '詳 P2',
     title: '查看更多消息',
   },
-  {
-    description: '財會作業時程、月結提醒與後續可擴充提醒內容。',
-    href: '/finance-reminders',
-    items: ['月結提醒', '核銷補件', '請款格式'],
-    label: '詳 P5',
-    title: '財會相關作業提醒',
-  },
 ]
 
 export const prototypeAnnouncements = [
   {
+    categoryKey: '系統通知',
+    category: '人事行政',
+    date: '08/28',
+    file: false,
+    meta: '資訊部',
+    publishedAt: '2026/08/28 08:30',
+    tag: '人事行政',
+    title: '差勤與資訊系統維護期間服務短暫中斷通知',
+  },
+  {
+    categoryKey: '制度政策',
+    category: '公司公告',
+    date: '08/27',
+    file: true,
+    meta: '管理部',
+    publishedAt: '2026/08/27 13:20',
+    tag: '公司公告',
+    title: '公司規章與工作準則修訂重點公告',
+  },
+  {
+    categoryKey: '其他',
+    category: '公司公告',
+    date: '08/26',
+    file: false,
+    meta: '總務部',
+    publishedAt: '2026/08/26 10:10',
+    tag: '公司公告',
+    title: '辦公區臨時停電與設備檢修時段提醒',
+  },
+  {
+    categoryKey: '人事公告',
     category: '人事行政',
     date: '08/25',
     file: true,
@@ -81,15 +104,17 @@ export const prototypeAnnouncements = [
     title: '2026 年下半年員工健康檢查實施辦法與預約時段公告',
   },
   {
-    category: '公司公告',
+    categoryKey: '集團公告',
+    category: '人事行政',
     date: '08/24',
     file: false,
     meta: '資訊部',
     publishedAt: '2026/08/24 16:30',
-    tag: '公司公告',
+    tag: '人事行政',
     title: '員工入口網站正式上線，原分散系統連結將於 9 月底停用',
   },
   {
+    categoryKey: '財會提醒',
     category: '財會作業',
     date: '08/22',
     file: true,
@@ -99,6 +124,7 @@ export const prototypeAnnouncements = [
     title: '8 月月結帳務單據送簽截止日提醒（08/28 17:00 前）',
   },
   {
+    categoryKey: '活動訊息',
     category: '園區動態',
     date: '08/21',
     file: true,
@@ -108,6 +134,7 @@ export const prototypeAnnouncements = [
     title: '新市園區公共區域清潔與設施檢修作業動線調整',
   },
   {
+    categoryKey: '人事公告',
     category: '人事行政',
     date: '08/19',
     file: false,
@@ -117,6 +144,7 @@ export const prototypeAnnouncements = [
     title: '差勤系統補登作業說明會報名開放（線上場次）',
   },
   {
+    categoryKey: '活動訊息',
     category: '園區動態',
     date: '08/15',
     file: true,
@@ -126,15 +154,17 @@ export const prototypeAnnouncements = [
     title: '合作廠商進場施工安全規範更新版本發布',
   },
   {
-    category: '公司公告',
+    categoryKey: '集團公告',
+    category: '人事行政',
     date: '08/12',
     file: false,
     meta: '稽核室',
     publishedAt: '2026/08/12 15:10',
-    tag: '公司公告',
+    tag: '人事行政',
     title: '第三季內部稽核作業說明會會議通知',
   },
   {
+    categoryKey: '財會提醒',
     category: '財會作業',
     date: '08/09',
     file: true,
@@ -144,15 +174,17 @@ export const prototypeAnnouncements = [
     title: '零用金請款憑證黏貼與核銷附件格式提醒',
   },
   {
-    category: '公司公告',
+    categoryKey: '集團公告',
+    category: '人事行政',
     date: '08/06',
     file: false,
     meta: '總務部',
     publishedAt: '2026/08/06 16:00',
-    tag: '公司公告',
+    tag: '人事行政',
     title: '辦公區空調保養作業時段與臨時動線說明',
   },
   {
+    categoryKey: '活動訊息',
     category: '園區動態',
     date: '08/03',
     file: false,
@@ -162,6 +194,7 @@ export const prototypeAnnouncements = [
     title: '新市園區停車區標線更新與車位調整通知',
   },
   {
+    categoryKey: '人事公告',
     category: '人事行政',
     date: '07/30',
     file: true,
@@ -171,15 +204,17 @@ export const prototypeAnnouncements = [
     title: '年度教育訓練課程報名期程與注意事項公告',
   },
   {
-    category: '公司公告',
+    categoryKey: '集團公告',
+    category: '人事行政',
     date: '07/28',
     file: false,
     meta: '資訊部',
     publishedAt: '2026/07/28 10:10',
-    tag: '公司公告',
+    tag: '人事行政',
     title: '內部系統密碼定期更新與多因子驗證提醒',
   },
   {
+    categoryKey: '財會提醒',
     category: '財會作業',
     date: '07/25',
     file: true,
@@ -189,6 +224,7 @@ export const prototypeAnnouncements = [
     title: '廠商請款資料補件截止日與付款批次說明',
   },
   {
+    categoryKey: '活動訊息',
     category: '園區動態',
     date: '07/22',
     file: false,
@@ -198,6 +234,7 @@ export const prototypeAnnouncements = [
     title: '倉儲區消防設備巡檢作業與配合事項通知',
   },
   {
+    categoryKey: '人事公告',
     category: '人事行政',
     date: '07/18',
     file: false,
@@ -207,15 +244,17 @@ export const prototypeAnnouncements = [
     title: '員工福利平台資料更新與眷屬資料確認提醒',
   },
   {
-    category: '公司公告',
+    categoryKey: '集團公告',
+    category: '人事行政',
     date: '07/15',
     file: true,
     meta: '管理部',
     publishedAt: '2026/07/15 15:35',
-    tag: '公司公告',
+    tag: '人事行政',
     title: '訪客換證與會議室借用流程調整公告',
   },
   {
+    categoryKey: '財會提醒',
     category: '財會作業',
     date: '07/12',
     file: false,
@@ -225,6 +264,7 @@ export const prototypeAnnouncements = [
     title: '差旅費申請常見退件原因與填寫範例提醒',
   },
   {
+    categoryKey: '活動訊息',
     category: '園區動態',
     date: '07/08',
     file: true,
@@ -234,6 +274,7 @@ export const prototypeAnnouncements = [
     title: '園區公共區域清潔消毒作業排程公告',
   },
   {
+    categoryKey: '人事公告',
     category: '人事行政',
     date: '07/05',
     file: false,
@@ -243,15 +284,17 @@ export const prototypeAnnouncements = [
     title: '新人到職資料繳交與系統帳號開通作業說明',
   },
   {
-    category: '公司公告',
+    categoryKey: '集團公告',
+    category: '人事行政',
     date: '07/02',
     file: false,
     meta: '總經理室',
     publishedAt: '2026/07/02 09:00',
-    tag: '公司公告',
+    tag: '人事行政',
     title: '第二季經營會議重點摘要與後續追蹤事項',
   },
   {
+    categoryKey: '財會提醒',
     category: '財會作業',
     date: '06/29',
     file: true,
@@ -261,6 +304,7 @@ export const prototypeAnnouncements = [
     title: '上半年預算執行回報格式與資料繳交期限',
   },
   {
+    categoryKey: '活動訊息',
     category: '園區動態',
     date: '06/25',
     file: false,
@@ -270,6 +314,7 @@ export const prototypeAnnouncements = [
     title: '貨車進出動線尖峰時段分流試辦通知',
   },
   {
+    categoryKey: '人事公告',
     category: '人事行政',
     date: '06/21',
     file: true,
@@ -279,15 +324,95 @@ export const prototypeAnnouncements = [
     title: '端午節連假出勤與請假登錄注意事項',
   },
   {
-    category: '公司公告',
+    categoryKey: '集團公告',
+    category: '人事行政',
     date: '06/18',
     file: false,
     meta: '資訊部',
     publishedAt: '2026/06/18 10:30',
-    tag: '公司公告',
+    tag: '人事行政',
     title: '網路設備維護期間部分系統短暫中斷通知',
   },
 ]
+
+export const announcementCategoryStyles = {
+  系統通知: {
+    backgroundColor: '#F5F3FF',
+    color: '#6D28D9',
+  },
+  制度政策: {
+    backgroundColor: '#FFF1F2',
+    color: '#BE123C',
+  },
+  人事公告: {
+    backgroundColor: '#FFF4E8',
+    color: '#D96B00',
+  },
+  活動訊息: {
+    backgroundColor: '#ECFDF8',
+    color: '#087F6E',
+  },
+  集團公告: {
+    backgroundColor: '#EEEEF8',
+    color: '#32327B',
+  },
+  其他: {
+    backgroundColor: '#EFF6FF',
+    color: '#1D4ED8',
+  },
+  財會提醒: {
+    backgroundColor: '#FFFBEB',
+    color: '#B45309',
+  },
+  人事行政: {
+    backgroundColor: '#FFF4E8',
+    color: '#D96B00',
+  },
+  公司公告: {
+    backgroundColor: '#EFF6FF',
+    color: '#1D4ED8',
+  },
+  園區動態: {
+    backgroundColor: '#ECFDF8',
+    color: '#087F6E',
+  },
+  財會作業: {
+    backgroundColor: '#FFFBEB',
+    color: '#B45309',
+  },
+}
+
+export const announcementCategoryOptions = [
+  { key: '系統通知', label: '人事行政' },
+  { key: '制度政策', label: '公司公告' },
+  { key: '人事公告', label: '人事行政' },
+  { key: '活動訊息', label: '園區動態' },
+  { key: '集團公告', label: '人事行政' },
+  { key: '其他', label: '公司公告' },
+  { key: '財會提醒', label: '財會作業' },
+]
+
+export const announcementCategoryDescriptions = {
+  系統通知: '主機或資訊系統相關之重大告知事項。',
+  制度政策: '公司規範、工作準則及其他制度之異動及重要提醒。',
+  人事公告: '人力資源管理相關訊息通知，如招聘、人事異動、福利待遇、培訓安排等相關內容。',
+  活動訊息: '與公司相關之重大事件、課程、日程及優惠資訊分享。',
+  集團公告: '統一企業或相關企業所發佈之重要公文。',
+  其他: '無法歸屬於上述類別或難以區分之類型，如公司停電、停水、鄰近交通管制、消防演習等訊息公告。',
+  財會提醒: '與財會作業之相關提醒。',
+  人事行政: '人力資源管理相關訊息通知，如招聘、人事異動、福利待遇、培訓安排等相關內容。',
+  公司公告: '公司規範、工作準則、制度異動及一般公告事項。',
+  園區動態: '與公司園區相關之重大事件、課程、日程及優惠資訊分享。',
+  財會作業: '與財會作業之相關提醒。',
+}
+
+export function getAnnouncementCategoryStyle (category) {
+  return announcementCategoryStyles[category] ?? announcementCategoryStyles.公司公告
+}
+
+export function getAnnouncementCategoryDescription (category) {
+  return announcementCategoryDescriptions[category] ?? announcementCategoryDescriptions.公司公告
+}
 
 export const prototypeAbout = {
   intro: [
@@ -307,9 +432,10 @@ export const prototypePrinciples = [
 
 export const prototypeChips = [
   '全部',
+  '人事行政',
   '公司公告',
   '園區動態',
-  '人事行政',
+  '財會作業',
 ]
 
 export const prototypeQuickLinks = [

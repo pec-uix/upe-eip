@@ -16,25 +16,25 @@ export default createVuetify({
       light: {
         colors: {
           // 品牌主色
-          primary: '#32327B',
+          'primary': '#32327B',
           'primary-light': '#E6EAF2',
           // 強調色
-          accent: '#FF8200',
+          'accent': '#FF8200',
           'accent-dark': '#CC6800',
           'accent-light': '#FFE8CC',
-          secondary: '#FF8200',
+          'secondary': '#FF8200',
           // 頁面背景
-          portalBackground: '#F5F7FB',
-          portalSurface: '#FFFFFF',
+          'portalBackground': '#F5F7FB',
+          'portalSurface': '#FFFFFF',
           // 中性色
-          border: '#E5E7EB',
-          textPrimary: '#1A1A1A',
-          textSecondary: '#6B7280',
+          'border': '#E5E7EB',
+          'textPrimary': '#1A1A1A',
+          'textSecondary': '#6B7280',
           // 語意色
-          success: '#2E7D32',
-          warning: '#ED6C02',
-          error: '#D32F2F',
-          info: '#0288D1',
+          'success': '#2E7D32',
+          'warning': '#ED6C02',
+          'error': '#D32F2F',
+          'info': '#0288D1',
         },
       },
     },
